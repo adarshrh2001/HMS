@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en kn">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset = "UTF-8" />
+        <link rel = "icon" href = "images/logo3.png" type = "Images/png">
+        <title>HMS</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+
+    </head>
+    <body >
+        <h1> WELCOME TO HOSPITAL MANAGEMENT SYSTEM</h1>
+        <h2>Manage all data at one place</h2>
+        <h2 style="font-style: italic;color: rgb(240, 149, 13);">Welcome user</h2>
+        <h3 style="font-style: italic;color: rgb(240, 149, 13);">let's view and Download your data</h3>
+        <div id="patient_option">
+            <div class="patient_option">
+             <button id="view_report">View report</button>
+             <button id="download_report">Download Report</button>
+            </div>
+ 
+             <div id="show_data"></div>
+             <button id="patient_back">close</button>
+           
+         </div>
+
+    </body>
+    
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+                                   const patient_option=document.getElementById("patient_option");
+                           const closebtn=document.getElementById("patient_back");
+                           patient_option.style.visibility="visible";
+                           closebtn.addEventListener("click", (e) => {
+                               e.preventDefault();
+                               patient_option.style.visibility="hidden";
+                               patient_log.style.visibility="hidden";
+                           })
+    </script>
+</body>
+</html>
