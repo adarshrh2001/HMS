@@ -53,7 +53,8 @@ btn.addEventListener("click", (e) => {
                    // alert("verified"+verify);
                     if (verify.responseText=='1') {
                         alert("You have successfully logged in.");
-                        location.href = "doctor.html";
+                        localStorage.setItem("DoctorID", username);
+                        location.href = "doctor.php";
                     } else {
                         alert("Incorrect user name or password")
                     }

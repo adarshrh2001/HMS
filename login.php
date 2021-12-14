@@ -34,7 +34,8 @@ function testpassword()
 
         if ($row["Doctor_password"]==$passwd)
         {$passed=1;
-
+          session_start();
+          $_SESSION['DoctorID']=$username;
         }
     
         else{

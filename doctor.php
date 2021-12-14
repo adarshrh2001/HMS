@@ -9,7 +9,7 @@
         
 
     </head>
-    <body>
+    <body >
         <section >
             <div class="body_part">
                 <h2 class="central-head text-center fs-1">WELCOME TO THE WORLD OF HEALING</h2>
@@ -31,15 +31,16 @@
                   <?php
                   
                   include "connection.php"; // Using database connection file here
-                  echo"<script type=\"text/javascript\">
-                  {
-                  var DrID = localStorage.getItem('doctorID');
-                  $.POST('doctor.php', {'doctorID':DrID});}
+                  // echo"<script type=\"text/javascript\">
+                  // $(document).ready( function() {
+                  // var DrID = localStorage.getItem('doctorID');
+                  // $_POST('', {'doctorID':DrID});}
 
-                  </script>";
-
-                  $doctorID=$_POST['doctorID'];
-                  echo $doctorID;
+                  // </script>";
+                    session_start();
+                   $doctorID=$_SESSION['DoctorID'];
+                  // $doctorID = "<script type=\"text/javascript\">document.write(localStorage.getItem('doctorID'))</script>";
+                  // // echo $doctorID;
                   
                   $sql = "SELECT `patient_Id`, `P_Name` FROM `patient` WHERE patient_Id in(SELECT  `patient_patient_Id` FROM `doctor_has_patient` WHERE Doctor_Doctor_ID=$doctorID);";
                   $result = mysqli_query($conn, $sql);
