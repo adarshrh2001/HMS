@@ -33,7 +33,6 @@ li.list-group-items {
 }
 
 .list-group-items button:hover {
-
     color: #000;
     font-size: 1.15rem;
     text-decoration: underline;
@@ -70,7 +69,8 @@ section {
     margin-top: 3rem;
 }
 
-#dash_opt {
+#dash_opt,
+#dash_opt1 {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -87,12 +87,14 @@ section {
     margin: 2px;
 }
 
-#dash_opt>button {
+#dash_opt>button,
+#dash_opt1>button {
     background-color: transparent;
     padding: 3px 10px;
 }
 
-#dash_opt>button:hover {
+#dash_opt>button:hover,
+#dash_opt1>button:hover {
     background-color: azure;
     text-decoration: none;
     border-radius: 5px;
@@ -129,7 +131,7 @@ label {
 #edit_patient_div {
     position: absolute;
     top: 10%;
-    left: 20%;
+    left: 15%;
     z-index: 3;
     width: 70%;
     background: linear-gradient(#ddd6f3, #faaca8);
@@ -139,7 +141,28 @@ label {
     box-shadow: 5px 5px 5px rgb(92, 89, 89);
 }
 
-#search_result {
-    /* visibility: hidden;  */
-    display: none;
+#doctor_div {
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    z-index: 3;
+    width: 70%;
+    background: linear-gradient(#ddd6f3, #faaca8);
+    visibility: hidden;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgb(92, 89, 89);
+}
+
+#fd_div {
+    position: absolute;
+    top: 35%;
+    left: 15%;
+    z-index: 3;
+    width: 70%;
+    background: linear-gradient(#ddd6f3, #faaca8);
+    visibility: hidden;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgb(92, 89, 89);
 }

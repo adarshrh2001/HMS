@@ -1,5 +1,5 @@
-let dashBtn = document.getElementById('dashboard');
-let dashOpt = document.getElementById('dash_opt');
+const dashBtn = document.getElementById('dashboard');
+const dashOpt = document.getElementById('dash_opt');
 
 dashBtn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -9,6 +9,8 @@ dashBtn.addEventListener("click", (e) => {
         dashOpt.style.visibility = 'visible';
     }
 })
+
+
 
 
 const patientForm = document.getElementById('patient_details');

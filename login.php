@@ -58,6 +58,8 @@ function testpassword()
 
         if ($row["Password"]==$passwd)
         {$passed=1;
+          session_start();
+          $_SESSION['AdminID']=$username;
 
         }
     
@@ -79,6 +81,8 @@ function testpassword()
 
         if ($row["FD_password"]==$passwd)
         {$passed=1;
+          session_start();
+          $_SESSION['FDID']=$username;
 
         }
     
@@ -100,7 +104,8 @@ function testpassword()
     
             if ($row["Patient_password"]==$passwd)
             {$passed=1;
-    
+              session_start();
+              $_SESSION['PatientID']=$username;
             }
         
             else{
