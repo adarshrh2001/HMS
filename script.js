@@ -150,7 +150,7 @@ btn2.addEventListener("click", (e) => {
                     //alert("verified"+verify);
                     if (verify.responseText=='1') {
                         alert("You have successfully logged in.");
-                        location.href = "fd.html";
+                        location.href = "fd1.php";
                     } else {
                         alert("Incorrect user name or password")
                     }

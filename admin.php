@@ -52,7 +52,7 @@ if(isset($_POST['doctor']))
         $result = mysqli_query($conn, $sql2);
         if($result)
         {
-            echo"<script type=\"text/javascript\">alert('Record added successfully');</script>";
+            echo"<script type=\"text/javascript\">alert('Record added successfully');location.href = \"admin.html\";</script>";
         }
         else{
             echo"<script type=\"text/javascript\">alert('Error please add again +$conn->error_log');</script>";
