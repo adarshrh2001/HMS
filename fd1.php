@@ -7,7 +7,7 @@ if(isset($_POST['add']))
     $name=$_POST['PatientName'];
     $PatientId=(int)$_POST['PatientId'];
     $patientpass=$_POST['Patientpass'];
-    $phoneno=$_POST['PhoneNo'];
+    $phoneno=(int)$_POST['PhoneNo'];
     $DateOfBirth=$_POST['DateOfBirth'];
     $BloodGroup=$_POST['BloodGroup'];
     $City=$_POST['City'];
@@ -43,6 +43,48 @@ if(isset($_POST['add']))
         }
     }
 }
+if(isset($_POST['save']))
+{
+    $name=$_POST['PatientName'];
+    $PatientId=$_SESSION['patientid1'];
+    $patientpass=$_POST['Patientpass'];
+    $phoneno=(int)$_POST['PhoneNo'];
+    $DateOfBirth=$_POST['DateOfBirth'];
+    $BloodGroup=$_POST['BloodGroup'];
+    $City=$_POST['City'];
+    $State=$_POST['State'];
+    $Country=$_POST['Country'];
+    $doctor=(int)$_POST['doctor'];
+    $pin=(int)$_POST['pin'];
+   
+    $fd=$_SESSION['FDID'];
+    // $sql = "SELECT * FROM `patient` WHERE patient_Id=$PatientId;";
+    // $result = mysqli_query($conn, $sql);
+    // $nrows=mysqli_num_rows($result);
+    // if($nrows!=0)
+    // {
+    //     echo"<script type=\"text/javascript\">alert('This Front Desk user Id already exists');</script>";
+    // }
+    // else{
+        $sql2 = "UPDATE `patient` SET `Patient_password`=' $patientpass',`P_Name`='$name',`Pin_code`=$pin,`city`='$City',`state`='$State',`country`='$Country',`DOB`='$DateOfBirth',`bloodgroup`='$BloodGroup',`FD_FD_ID`= $fd,`phone_No`=$phoneno WHERE patient_Id=$PatientId";
+        $result = mysqli_query($conn, $sql2);
+        $sql3="UPDATE `doctor_has_patient` SET `Doctor_Doctor_ID`=$doctor WHERE patient_patient_Id=$PatientId";
+        $result2 = mysqli_query($conn, $sql3);
+        foreach($_POST['Allergies'] as $alergy)
+        {
+            $sql4="UPDATE `patient_allergy` SET `allergy`='$alergy',`patient_FD_FD_ID`=$fd WHERE patient_patient_Id=$PatientId AND allergy='$alergy'";
+            $result3 = mysqli_query($conn, $sql4);
+        }
+        if($result&&$result2&&$result3)
+        {
+            echo"<script type=\"text/javascript\">alert('Record added successfully');</script>";
+        }
+        else{
+            echo"<script type=\"text/javascript\">alert('Error please add again +".mysqli_error($conn)."');</script>";
+        }
+   // }
+}
+
 
 ?>
                     <?php mysqli_close($conn); 
@@ -107,7 +149,7 @@ if(isset($_POST['add']))
                 <input type="date" name="DateOfBirth" id="dob" required>
                 <br>
                 <label for="bloodgroup">Blood Group:</label>
-                <input type="text" name="BloodGroup" id="bloodgroup" placeholder="Enter Patient Blood Group">
+                <input type="text" name="BloodGroup" id="bloodgroup" placeholder="Enter Patient Blood Group" required>
                 <br>
                 <div class="allergyfield">
                     <div id="add1">
@@ -119,19 +161,19 @@ if(isset($_POST['add']))
                 </div>
                 <button id="add">ADD  </button>&emsp;<button id="remove">REMOVE</button><br>
                 <label for="city">City:&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                <input type="text" name="City" id="city" placeholder="Enter the City">
+                <input type="text" name="City" id="city" placeholder="Enter the City" required>
                 <br>
                 <label for="state">State:&emsp;&emsp;&emsp;&nbsp;&nbsp;</label>
-                <input type="text" name="State" id="state" placeholder="Enter the State">
+                <input type="text" name="State" id="state" placeholder="Enter the State" required>
                 <br>
                 <label for="country">Country:&emsp;&emsp;&nbsp;</label>
                 <input type="text" name="Country" id="country" placeholder="Enter the Country">
                 <br>
                 <label for="pin">Pin code:&emsp;&emsp;&nbsp;</label>
-                <input type="number" name="pin" id="pin" placeholder="6 digit pincode" pattern="[0-9]{6}" >
+                <input type="number" name="pin" id="pin" placeholder="6 digit pincode" pattern="[0-9]{6}" requred >
                 <br>
                 <label for="doctor">Doctor assigned:&emsp;&emsp;&emsp;&nbsp;&nbsp;</label>
-                <select name="doctor" id="doctor">
+                <select name="doctor" id="doctor" required>
                 <option disabled selected>-- Select doctor --</option>
                     <?php
                          include "connection.php";  
@@ -153,7 +195,7 @@ if(isset($_POST['add']))
         <div class="edit-patient-div" id="edit_patient_div">
             <form action="fd1.php" method="post" id="edit_form">
                 <label for="patientid1">Patient Id:  &emsp;&nbsp; </label>
-                <input type="text" name="PatientId" id="patientid1" placeholder="Enter Patient Id" required>
+                <input type="number" name="PatientId" id="patientid1" placeholder="Enter Patient Id" required>
                 <br>
                 <input type="submit" value="search" name="search" class="btn btn-primary submit" id="search_btn">
                 <br>
@@ -210,7 +252,7 @@ if(isset($_POST['add']))
                         echo"
                         <button id=\"addb1\">ADD  </button>&emsp;<button id=\"removez1\">REMOVE</button><br>
                         <label for=\"city\">City:&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                        <input type=\"text\" name=\"City\" id=\"city1\" value=\"".$data1['city']."\">
+                        <input type=\"text\" name=\"City\" id=\"city1\" value=\"".$data1['city']."\"required>
                         <br>
                         <label for=\"state\">State:&emsp;&emsp;&emsp;&nbsp;&nbsp;</label>
                         <input type=\"text\" name=\"State\" id=\"state1\" value=\"".$data1['state']."\">
@@ -219,10 +261,10 @@ if(isset($_POST['add']))
                         <input type=\"text\" name=\"Country\" id=\"country1\" value=\"".$data1['country']."\">
                         <br>
                         <label for=\"pin\">Pin code:&emsp;&emsp;&nbsp;</label>
-                        <input type=\"number\" name=\"pin\" id=\"pin1\" value=\"".$data1['Pin_code']."\" pattern=\"[0-9]{6}\" >
+                        <input type=\"number\" name=\"pin\" id=\"pin1\" value=\"".$data1['Pin_code']."\" pattern=\"[0-9]{6}\" required >
                         <br>
                         <label for=\"doctor\">Doctor assigned:&emsp;&emsp;&emsp;&nbsp;&nbsp;</label>
-                        <select name=\"doctor\" id=\"doctor1\">
+                        <select name=\"doctor\" id=\"doctor1\" required>
                        // <option disabled selected>-- Select doctor --</option>
                         <option value='". $data2['Doctor_ID']." 'selected>" .$data2['dinfo']."</option>
                         ";	
