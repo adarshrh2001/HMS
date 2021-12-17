@@ -78,7 +78,7 @@ rmBtn.addEventListener("click",(e)=>{
 })
 var max_fields1 = 5;
 var x1 = 1; 
-const allergyf1=document.getElementById('addz1');
+const allergyf1=document.getElementById('addz11');
 const addBtn1 = document.getElementById('addb1');
 const rmBtn1 = document.getElementById('removez1');
 addBtn1.addEventListener("click",(e)=>{

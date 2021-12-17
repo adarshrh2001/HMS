@@ -70,9 +70,10 @@ if(isset($_POST['save']))
         $result = mysqli_query($conn, $sql2);
         $sql3="UPDATE `doctor_has_patient` SET `Doctor_Doctor_ID`=$doctor WHERE patient_patient_Id=$PatientId";
         $result2 = mysqli_query($conn, $sql3);
+        $result4=mysqli_query($conn,"DELETE FROM `patient_allergy` WHERE patient_patient_Id=$PatientId");
         foreach($_POST['Allergies'] as $alergy)
         {
-            $sql4="UPDATE `patient_allergy` SET `allergy`='$alergy',`patient_FD_FD_ID`=$fd WHERE patient_patient_Id=$PatientId AND allergy='$alergy'";
+            $sql4="INSERT INTO `patient_allergy`(`allergy`, `patient_patient_Id`, `patient_FD_FD_ID`) VALUES ('$alergy',$PatientId,$fd);";
             $result3 = mysqli_query($conn, $sql4);
         }
         if($result&&$result2&&$result3)
@@ -159,7 +160,7 @@ if(isset($_POST['save']))
                 <br></div>
                 
                 </div>
-                <button id="add">ADD  </button>&emsp;<button id="remove">REMOVE</button><br>
+                <button id="add"  class="btn btn-primary submit">ADD  </button>&emsp;<button id="remove"  class="btn btn-primary submit">REMOVE</button><br>
                 <label for="city">City:&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                 <input type="text" name="City" id="city" placeholder="Enter the City" required>
                 <br>
@@ -189,7 +190,7 @@ if(isset($_POST['save']))
                     ?>
                 </select>
                 <br>
-                <input type="submit" value="Register" name="add" class="bg-success">
+                <input type="submit" value="Register" name="add" class="bg-success btn btn-primary submit">
             </form>
         </div>
         <div class="edit-patient-div" id="edit_patient_div">
@@ -238,19 +239,19 @@ if(isset($_POST['save']))
                         <input type=\"text\" name=\"BloodGroup\" id=\"bloodgroup1\" value=\"".$data1['bloodgroup']."\"required>
                         <br>
                         <div class=\"allergyfield1\">
-                        <div id=\"addz1\">
+                        
                         ";
                         $x=1;
                         while($data = mysqli_fetch_array($records2))
                         {
-                         echo "  <div id=\"add".$x."\">
+                         echo "  <div id=\"addz1".$x."\">
                          <label for=\"allergy\">Allergies:&emsp;&emsp;</label>
                          <input type=\"text\" name=\"Allergies[]\"  value=\"".$data['allergy']."\" multiple required>
                          
                          <br></div>";  
                         }
-                        echo"
-                        <button id=\"addb1\">ADD  </button>&emsp;<button id=\"removez1\">REMOVE</button><br>
+                        echo"</div>
+                        <button id=\"addb1\" class=\"btn btn-primary submit\">ADD  </button>&emsp;<button id=\"removez1\" class=\"btn btn-primary submit\">REMOVE</button><br>
                         <label for=\"city\">City:&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         <input type=\"text\" name=\"City\" id=\"city1\" value=\"".$data1['city']."\"required>
                         <br>
@@ -276,7 +277,7 @@ if(isset($_POST['save']))
                         echo "
                         </select>
                         <br>
-                        <input type=\"submit\" value=\"save\" name=\"save\" class=\"bg-success\">
+                        <input type=\"submit\" value=\"save\" name=\"save\" class=\"bg-success btn btn-primary submit\">
                         ";
                        
                     }
@@ -316,8 +317,8 @@ if(isset($_POST['save']))
                 </div> -->
 
             </form>
-
-                    <button id="formclose">close</button>
+                    
+                    <button id="formclose" class="btn btn-primary submit border-2 margin-4">close</button>
         </div>
     </section>
     <footer>

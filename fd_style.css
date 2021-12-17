@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Russo+One&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Russo+One&display=swap'); */
 * {
     margin: 0;
     padding: 0;
@@ -166,15 +166,17 @@ label {
     border-radius: 10px;
     box-shadow: 5px 5px 5px rgb(92, 89, 89);
 }
-.add,.remove {
-    background-color: transparent;
+#edit-patient-div>button,#add-patient-div>button{
+    background-color:rgb(107, 107, 226);
     padding: 3px 10px;
+    border-radius: 5px;
 }
 
-.add,.remove >button:hover {
+#add-patient-div>button:hover,#edit-patient-div>button:hover  {
     background-color: azure;
-    text-decoration: none;
+    text-decoration:underline;
     border-radius: 5px;
+    padding: 3px 10px;
 }
 .doctor{
     background: linear-gradient(#ddd6f3, #faaca8); 
