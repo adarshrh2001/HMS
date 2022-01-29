@@ -74,4 +74,26 @@ table,th,td,tr,tbody{
 td{
     text-align: center;
 }
+#ML,.view_rep{
+  text-decoration: none;
+  color: #000;
+  font-size: 1.15rem;
+  padding: 10px 10px;
+  border: 1.5px solid rgb(204, 61, 61);
+  border-radius: 5px;
+  border-radius: 5px;
+  outline: none;
+  background-color:rgb(11, 120, 221);
+
+}
+#ML:hover,.view_rep:hover {
+ 
+  color: #000;
+  font-size: 1.15rem;
+  text-decoration: underline;
+  /*border: none;*/
+  outline: none;
+  
+  background-color:rgb(11, 120, 221);
+}
 

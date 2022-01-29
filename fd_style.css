@@ -101,7 +101,7 @@ section {
 }
 
 #patient_details {
-    position: absolute;
+    position:absolute;
     top: 10%;
     left: 20%;
     z-index: 3;
@@ -113,19 +113,20 @@ section {
     box-shadow: 5px 5px 5px rgb(92, 89, 89);
 }
 
-#patient_details input {
+#edit_patient_div input,#patient_details input {
     width: 250px;
     outline: none;
     border-radius: 5px;
     margin-bottom: 5px;
     background-color: transparent;
-    margin-left: 20px;
+    margin-left: 5px;
 }
 
-#patient_details .submit,
+#edit_patient_div,#patient_details .submit,
 label {
     margin-top: 20px;
-    margin-left: 20px;
+    margin-left: 10px;
+    width:auto;
 }
 
 #edit_patient_div {
@@ -181,3 +182,10 @@ label {
 .doctor{
     background: linear-gradient(#ddd6f3, #faaca8); 
 }
+input:invalid {
+    border: 2px solid rgb(189, 68, 68);
+    background-image: linear-gradient(to right, rgb(185, 162, 29), rgb(17, 190, 202));
+  }
+  #edit_patient_div.submit{
+      background-color: blue;
+  }

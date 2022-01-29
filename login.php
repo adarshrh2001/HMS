@@ -106,6 +106,7 @@ function testpassword()
             {$passed=1;
               session_start();
               $_SESSION['PatientID']=$username;
+              
             }
         
             else{

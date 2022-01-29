@@ -20,7 +20,7 @@
                 </div>
 
             </div>
-            <div id="patient_table">
+            <div id="patient_table" style="display:none">
                 <table>
                     <tr>
                       <th>Patient Id</th>
@@ -51,12 +51,22 @@
                     <tr>
                       <td><?php echo $data['patient_Id']; ?></td>
                       <td><?php echo $data['P_Name']; ?></td>
-                      <td><button class="view_rep" value="$data['patient_Id']" >View Report</button></td>
+                      <td><form action="doctor.php" method="post"><input type="submit" name="button" class="view_rep" value= <?php echo $data['patient_Id'] ?> ></form></td>
+                      <!-- <button class="view_rep" value= <?php echo $data['patient_Id'] ?>>View Report</button> -->
                     </tr>	
                   <?php
                   }
                   ?>
                   </table>
+                  <?php
+      
+        if(isset($_POST['button'])) {
+          session_start();
+          $_SESSION['PatientID']=$_POST['button'];
+            echo "<script type=\"text/javascript\">location.href=\"report.php\";</script>";
+        }
+        
+    ?>
                   
                   <?php mysqli_close($conn); // Close connection ?>
                   
@@ -64,6 +74,7 @@
             </div>
 
         </section>
+        <script src="drscript.js"> </script>
 
     </body>
 </html>

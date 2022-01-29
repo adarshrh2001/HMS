@@ -22,7 +22,7 @@ if(isset($_POST['add']))
     $nrows=mysqli_num_rows($result);
     if($nrows!=0)
     {
-        echo"<script type=\"text/javascript\">alert('This Front Desk user Id already exists');</script>";
+        echo"<script type=\"text/javascript\">alert('This Patient Id already exists');</script>";
     }
     else{
         $sql2 = "INSERT INTO `patient`(`patient_Id`, `Patient_password`, `P_Name`, `Pin_code`, `city`, `state`, `country`, `DOB`, `bloodgroup`, `FD_FD_ID`,`phone_No`) VALUES ($PatientId,'$patientpass','$name',$pin,'$City','$State',' $Country','$DateOfBirth','$BloodGroup',$fd,$phoneno);";
@@ -135,22 +135,22 @@ if(isset($_POST['save']))
         <div class="add-patient-div" id="patient_details">
             <form action="fd1.php" method="post">
                 <label for="name">Name:&emsp;&emsp;&emsp;</label>
-                <input type="text" name="PatientName" id="name" placeholder="Enter Patient Name" required>
+                <input type="text" name="PatientName" id="name" placeholder="Enter Patient Name" required pattern="[a-zA-Z\s_]+">
                 <br>
                 <label for="patientid">Patient Id:  &emsp;&nbsp; </label>
-                <input type="text" name="PatientId" id="patientid" placeholder="Enter Patient Id" required>
+                <input type="text" name="PatientId" id="patientid" placeholder="Enter Patient Id" required pattern="[0-9]{4,}">
                 <br>
                 <label for="patientpass">Patient Password:&nbsp; </label>
                 <input type="password" name="Patientpass" id="patientpass" placeholder="Enter Patient password" required>
                 <br>
                 <label for="phoneno">Phone No:&emsp;&nbsp;</label>
-                <input type="tel" name="PhoneNo" id="phoneno" placeholder="Enter Patient Mobile No." required>
+                <input type="tel" name="PhoneNo" id="phoneno" placeholder="Enter Patient Mobile No." required pattern="\+?[0-9]{10,12}">
                 <br>
                 <label for="dob">Date of Birth:</label>
                 <input type="date" name="DateOfBirth" id="dob" required>
                 <br>
                 <label for="bloodgroup">Blood Group:</label>
-                <input type="text" name="BloodGroup" id="bloodgroup" placeholder="Enter Patient Blood Group" required>
+                <input type="text" name="BloodGroup" id="bloodgroup" placeholder="Enter Patient Blood Group" required pattern="[a-zA-Z]{1,2}[+-](ve)?">
                 <br>
                 <div class="allergyfield">
                     <div id="add1">
@@ -162,16 +162,16 @@ if(isset($_POST['save']))
                 </div>
                 <button id="add"  class="btn btn-primary submit">ADD  </button>&emsp;<button id="remove"  class="btn btn-primary submit">REMOVE</button><br>
                 <label for="city">City:&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                <input type="text" name="City" id="city" placeholder="Enter the City" required>
+                <input type="text" name="City" id="city" placeholder="Enter the City" required pattern="[a-zA-z_ ]+">
                 <br>
                 <label for="state">State:&emsp;&emsp;&emsp;&nbsp;&nbsp;</label>
-                <input type="text" name="State" id="state" placeholder="Enter the State" required>
+                <input type="text" name="State" id="state" placeholder="Enter the State" required pattern="[a-zA-z_ ]+">
                 <br>
                 <label for="country">Country:&emsp;&emsp;&nbsp;</label>
-                <input type="text" name="Country" id="country" placeholder="Enter the Country">
+                <input type="text" name="Country" id="country" placeholder="Enter the Country" required pattern="[a-zA-z_ ]+">
                 <br>
                 <label for="pin">Pin code:&emsp;&emsp;&nbsp;</label>
-                <input type="number" name="pin" id="pin" placeholder="6 digit pincode" pattern="[0-9]{6}" requred >
+                <input type="text" name="pin" id="pin" placeholder="6 digit pincode"  required pattern="[0-9]{6,6}" >
                 <br>
                 <label for="doctor">Doctor assigned:&emsp;&emsp;&emsp;&nbsp;&nbsp;</label>
                 <select name="doctor" id="doctor" required>
@@ -196,7 +196,7 @@ if(isset($_POST['save']))
         <div class="edit-patient-div" id="edit_patient_div">
             <form action="fd1.php" method="post" id="edit_form">
                 <label for="patientid1">Patient Id:  &emsp;&nbsp; </label>
-                <input type="number" name="PatientId" id="patientid1" placeholder="Enter Patient Id" required>
+                <input type="text" name="PatientId" id="patientid1" placeholder="Enter Patient Id"  pattern="[0-9]{4,}">
                 <br>
                 <input type="submit" value="search" name="search" class="btn btn-primary submit" id="search_btn">
                 <br>
@@ -224,19 +224,19 @@ if(isset($_POST['save']))
                         $records3 = mysqli_query($conn,  "SELECT concat(`specislization`,'-', `DR_Name`) AS dinfo , `Doctor_ID` FROM `doctor` WHERE 1;");
                         echo "
                         <label for=\"name\">Name:&emsp;&emsp;&emsp;</label>
-                        <input type=\"text\" name=\"PatientName\" id=\"name1\" value=\"".$data1['P_Name'] ."\"required>
+                        <input type=\"text\" name=\"PatientName\" id=\"name1\" value=\"".$data1['P_Name'] ."\"required pattern=\"[a-zA-Z\s_]+\">
                         <br>
                         <label for=\"patientpass\">Patient Password:&nbsp; </label>
                         <input type=\"password\" name=\"Patientpass\" id=\"patientpass1\" value=\"".$data1['Patient_password']."\" required>
                         <br>
                         <label for=\"phoneno\">Phone No:&emsp;&nbsp;</label>
-                        <input type=\"tel\" name=\"PhoneNo\" id=\"phoneno1\" value=\"".$data1['phone_No'] ."\" required>
+                        <input type=\"tel\" name=\"PhoneNo\" id=\"phoneno1\" value=\"".$data1['phone_No'] ."\" required pattern=\"\\+?[0-9]{10,12}\">
                         <br>
                         <label for=\"dob\">Date of Birth:</label>
                         <input type=\"date\" name=\"DateOfBirth\" id=\"dob1\" value=\"".date('Y-m-d',strtotime($data1['DOB'] ))."\"required>
                         <br>
                         <label for=\"bloodgroup\">Blood Group:</label>
-                        <input type=\"text\" name=\"BloodGroup\" id=\"bloodgroup1\" value=\"".$data1['bloodgroup']."\"required>
+                        <input type=\"text\" name=\"BloodGroup\" id=\"bloodgroup1\" value=\"".$data1['bloodgroup']."\"required  pattern=\"[a-zA-Z]{1,2}[+-](ve)?\">
                         <br>
                         <div class=\"allergyfield1\">
                         
@@ -253,16 +253,16 @@ if(isset($_POST['save']))
                         echo"</div>
                         <button id=\"addb1\" class=\"btn btn-primary submit\">ADD  </button>&emsp;<button id=\"removez1\" class=\"btn btn-primary submit\">REMOVE</button><br>
                         <label for=\"city\">City:&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                        <input type=\"text\" name=\"City\" id=\"city1\" value=\"".$data1['city']."\"required>
+                        <input type=\"text\" name=\"City\" id=\"city1\" value=\"".$data1['city']."\"required  pattern=\"[a-zA-z_ ]+\">
                         <br>
                         <label for=\"state\">State:&emsp;&emsp;&emsp;&nbsp;&nbsp;</label>
-                        <input type=\"text\" name=\"State\" id=\"state1\" value=\"".$data1['state']."\">
+                        <input type=\"text\" name=\"State\" id=\"state1\" value=\"".$data1['state']."\" required  pattern=\"[a-zA-z_ ]+\">
                         <br>
                         <label for=\"country\">Country:&emsp;&emsp;&nbsp;</label>
-                        <input type=\"text\" name=\"Country\" id=\"country1\" value=\"".$data1['country']."\">
+                        <input type=\"text\" name=\"Country\" id=\"country1\" value=\"".$data1['country']."\" required pattern=\"[a-zA-z_ ]+\">
                         <br>
                         <label for=\"pin\">Pin code:&emsp;&emsp;&nbsp;</label>
-                        <input type=\"number\" name=\"pin\" id=\"pin1\" value=\"".$data1['Pin_code']."\" pattern=\"[0-9]{6}\" required >
+                        <input type=\"text\" name=\"pin\" id=\"pin1\" value=\"".$data1['Pin_code']."\" pattern=\"[0-9]{6}\" required >
                         <br>
                         <label for=\"doctor\">Doctor assigned:&emsp;&emsp;&emsp;&nbsp;&nbsp;</label>
                         <select name=\"doctor\" id=\"doctor1\" required>

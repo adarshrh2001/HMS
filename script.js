@@ -31,6 +31,16 @@ btn.addEventListener("click", (e) => {
         const username = loginForm.username.value;
         const password = loginForm.password.value;
         var verify=0;
+        if (username=="")
+        loginForm.username.innerHTML="Enter ID";
+       else if(isNaN(username))
+        {loginForm.username.innerHTML="ID should be integer number";}
+        
+       else   if (password=="")
+        loginForm.innerHTML="Enter password";
+        
+        else
+        {
      $.ajax({
           
                 url:'login.php',
@@ -66,7 +76,7 @@ btn.addEventListener("click", (e) => {
           
 
         
-    })
+}})
     doctor_log.style.visibility="visible";
     
 })
@@ -203,6 +213,7 @@ btn3.addEventListener("click", (e) => {
                                e.preventDefault();
                                patient_option.style.visibility="hidden";
                                patient_log.style.visibility="hidden";
+                               location.href = "index.html";
                            })
                        } else {
                            alert("Incorrect user name or password")

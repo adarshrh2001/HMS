@@ -113,7 +113,16 @@ color: rgb(226, 23, 108);
         /*background-blend-mode:lighten;*/
         background-color: rgba(148, 150, 150, 0.5);
     }
+    #back_btn{
+        position: absolute;
+        bottom: 10px;
+        left: 40%; 
+    }
 
 }
+input:invalid {
+    border: 2px dashed red;
+    background-image: linear-gradient(to right, pink, lightgreen);
+  }
 
 
