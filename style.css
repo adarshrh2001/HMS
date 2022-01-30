@@ -92,7 +92,7 @@ color: rgb(226, 23, 108);
     padding: 10px 10px;
     visibility: hidden;
 }
-#patient_option{
+#patient_option,#show_data{
     z-index: 3;
     position: absolute;
     top: 20%;
@@ -102,6 +102,9 @@ color: rgb(226, 23, 108);
     width: 90%;
     height: 70%;
     padding: 10px 10px;
+    /* visibility: hidden; */
+}
+#show_data{
     visibility: hidden;
 }
 @media screen and (min-width:783px){
@@ -124,5 +127,33 @@ input:invalid {
     border: 2px dashed red;
     background-image: linear-gradient(to right, pink, lightgreen);
   }
+  #patient_table{
+    position: absolute;
+    vertical-align: middle;
+    top: 40%;
+    margin: 2px;
+    left:15%;
+    width: 70%;
+    background: linear-gradient(#79ece3, #ce7671);
+}
+
+table{
+  width: 100%;
+}
+tbody, td, tfoot, th, thead, tr {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 1px;
+    align-items: center;
+} 
+table,th,td,tr,tbody{
+    border: 1px solid #000000;
+    border-collapse: collapse;
+    
+
+}
+td{
+    text-align: center;
+}
 
 

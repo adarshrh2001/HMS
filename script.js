@@ -205,7 +205,7 @@ btn3.addEventListener("click", (e) => {
                        if (verify.responseText=='1') {
                            alert("You have successfully logged in.");
                            
-                           location.href = "patient.html";
+                           location.href = "patient.php";
                            const patient_option=document.getElementById("patient_option");
                            const closebtn=document.getElementById("patient_back");
                            patient_option.style.visibility="visible";
