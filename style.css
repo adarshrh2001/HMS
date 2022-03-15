@@ -100,12 +100,13 @@ color: rgb(226, 23, 108);
     background-color: rgb(194, 219, 105);
     background: linear-gradient(#d45c0c, #0d66db);
     width: 90%;
-    height: 70%;
+    height: 100%;
     padding: 10px 10px;
     /* visibility: hidden; */
 }
 #show_data{
     visibility: hidden;
+    background: none;
 }
 @media screen and (min-width:783px){
     body{

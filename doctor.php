@@ -51,7 +51,7 @@
                     <tr>
                       <td><?php echo $data['patient_Id']; ?></td>
                       <td><?php echo $data['P_Name']; ?></td>
-                      <td><form action="doctor.php" method="post"><input type="submit" name="button" class="view_rep" value= <?php echo $data['patient_Id'] ?> ></form></td>
+                      <td><form action="doctor.php" method="post"><input type="submit" name="button" class="view_rep" value= <?php echo $data['patient_Id'] ?> >view report</form></td>
                       <!-- <button class="view_rep" value= <?php echo $data['patient_Id'] ?>>View Report</button> -->
                     </tr>	
                   <?php

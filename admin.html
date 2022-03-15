@@ -42,7 +42,7 @@
         <div class="add_doctor_div" id="doctor_div">
             <form action="admin.php" method="post"  >
                 <label for="docname">Name:&emsp;&emsp;&emsp;</label>
-                <input type="text" name="DocName" id="docname" placeholder="Enter Doctor Name" required >
+                <input type="text" name="DocName" id="docname" placeholder="Enter Doctor Name" required pattern="[a-zA-Z\s_]+" >
                 <br>
                 <label for="doctorid">Doctor Id:  &emsp;&nbsp; </label>
                 <input type="text" name="DocId" id="doctorid" placeholder="Enter Doctor Id" required pattern="[0-9]{4,}">
@@ -51,7 +51,7 @@
                 <input type="text" name="Docspec" id="specialization" placeholder="Enter Specialization" required>
                 <br>
                 <label for="Docph">PhoneNumber:&emsp;&nbsp;</label>
-                <input type="text" name="Docph" id="Docph" placeholder="Enter PhoneNumber" required>
+                <input type="text" name="Docph" id="Docph" placeholder="Enter PhoneNumber"required pattern="\+?[0-9]{10,12}" required>
                 <br>
                 <label for="Docpass">Password:&emsp;&nbsp;</label>
                 <input type="password" name="Docpass" id="Docpass" placeholder="Enter password" required>
@@ -62,13 +62,13 @@
         <div class="add_fd_div" id="fd_div">
             <form action="admin.php" method="post" id="edit_form" >
                 <label for="fdname">Name: &emsp;&emsp; &emsp;&nbsp; &nbsp;</label>
-                <input type="text" name="FDName" id="fdname" placeholder="Enter Front Desk Name" required>
+                <input type="text" name="FDName" id="fdname" placeholder="Enter Front Desk Name" required pattern="[a-zA-Z\s_]+">
                 <br>
                 <label for="fdid">FD Id: &emsp;&emsp; &emsp;&nbsp;&nbsp; &nbsp;</label>
                 <input type="text" name="FDId" id="fdid" placeholder="Enter FD Id"required pattern="[0-9]{4,}">
                 <br>
                 <label for="fdphone">FD PhoneNo:  &emsp;&nbsp;&nbsp; </label>
-                <input type="text" name="FDphone" id="fdphone" placeholder="Enter FD Phone number" required>
+                <input type="text" name="FDphone" id="fdphone" placeholder="Enter FD Phone number" required pattern="\+?[0-9]{10,12}" required>
                 <br>
                 <label for="fdpass">FD Password:  &emsp;&nbsp;&nbsp; </label>
                 <input type="password" name="FDpass" id="fdpass" placeholder="Enter FD password" required>

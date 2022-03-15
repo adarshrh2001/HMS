@@ -46,14 +46,17 @@ body {
     
     background-color:rgb(11, 120, 221);
 }
-#patient_table{
-    position: absolute;
-    vertical-align: middle;
-    top: 40%;
-    margin: 2px;
-    left:15%;
-    width: 70%;
-    background: linear-gradient(#79ece3, #ce7671);
+#patient_table {
+  position: absolute;
+  vertical-align: middle;
+  top: 40%;
+  margin: 2px;
+  left: 5%;
+  display: flex;
+   width: 90%; 
+  background: linear-gradient(#79ece3, #ce7671);
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 table{
